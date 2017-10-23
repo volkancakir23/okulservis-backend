@@ -1,0 +1,85 @@
+enum OkuServis {
+    SABAH, AKSAM, DIGER
+}
+
+entity OkuSehir{
+	kod String,
+    isim String
+}
+
+entity OkuOkul {
+	kod String,
+    isim String,
+    mudurIsim String,
+    mudurTel String
+}
+
+entity OkuOgrenci{
+	no String,
+    isim String,
+    tc String,
+    aileIsim String,
+    aileTel String
+}
+
+entity OkuYolcu{
+	bindiMi Boolean,
+    ulastiMi Boolean
+}
+
+entity OkuGuzergah{
+	kod String,
+    rota String
+    harita String
+}
+
+entity OkuSofor{
+	kod String,
+    isim String,
+    tel String
+}
+
+entity OkuArac{
+	kod String,
+    plaka String,
+    marka String,
+    renk String
+}
+
+entity OkuSefer{
+	tarih LocalDate,
+    servis OkuServis,
+    yapildiMi Boolean
+}
+
+relationship ManyToOne {
+	OkuOkul{sehir} to OkuSehir
+}
+
+relationship ManyToOne {
+	OkuOgrenci{okul} to OkuOkul,
+	OkuOgrenci{guzergah} to OkuGuzergah
+}
+
+
+relationship ManyToOne {
+	OkuSehir{parent} to OkuSehir
+}
+
+relationship ManyToOne {
+	OkuGuzergah{okul} to OkuOkul
+}
+
+relationship ManyToOne {
+	OkuSefer{guzergah} to OkuGuzergah,
+    OkuSefer{sofor} to OkuSofor,
+    OkuSefer{arac} to OkuArac
+}
+
+relationship ManyToOne {
+	OkuYolcu{sefer} to OkuSefer,
+	OkuYolcu{ogrenci} to OkuOgrenci
+}
+
+service all with serviceImpl
+paginate all with pagination
