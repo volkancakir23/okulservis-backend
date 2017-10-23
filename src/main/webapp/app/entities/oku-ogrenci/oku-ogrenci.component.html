@@ -1,0 +1,97 @@
+<div>
+    <h2>
+        <span>Oku Ogrencis</span>
+        <button class="btn btn-primary float-right jh-create-entity create-oku-ogrenci" [routerLink]="['/', { outlets: { popup: ['oku-ogrenci-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span class="hidden-sm-down" >
+            Create new Oku Ogrenci
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="Query">
+                    <button class="input-group-addon btn btn-info" (click)="search(currentSearch)">
+                        <span class="fa fa-search"></span>
+                    </button>
+                    <button class="input-group-addon btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <span class="fa fa-trash-o"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="okuOgrencis">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span>ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="no"><span>No</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="isim"><span>Isim</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="tc"><span>Tc</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="aileIsim"><span>Aile Isim</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="aileTel"><span>Aile Tel</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="okul.id"><span>Okul</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="guzergah.id"><span>Guzergah</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let okuOgrenci of okuOgrencis ;trackBy: trackId">
+                <td><a [routerLink]="['../oku-ogrenci', okuOgrenci.id ]">{{okuOgrenci.id}}</a></td>
+                <td>{{okuOgrenci.no}}</td>
+                <td>{{okuOgrenci.isim}}</td>
+                <td>{{okuOgrenci.tc}}</td>
+                <td>{{okuOgrenci.aileIsim}}</td>
+                <td>{{okuOgrenci.aileTel}}</td>
+                <td>
+                    <div *ngIf="okuOgrenci.okul">
+                        <a [routerLink]="['../oku-okul', okuOgrenci.okul?.id ]" >{{okuOgrenci.okul?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="okuOgrenci.guzergah">
+                        <a [routerLink]="['../oku-guzergah', okuOgrenci.guzergah?.id ]" >{{okuOgrenci.guzergah?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../oku-ogrenci', okuOgrenci.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'oku-ogrenci/'+ okuOgrenci.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'oku-ogrenci/'+ okuOgrenci.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+        <div *ngIf="okuOgrencis && okuOgrencis.length">
+            <div class="row justify-content-center">
+                <jhi-item-count [page]="page" [total]="queryCount" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+            </div>
+            <div class="row justify-content-center">
+                <ngb-pagination [collectionSize]="totalItems" [pageSize]="itemsPerPage" [(page)]="page" (pageChange)="loadPage(page)"></ngb-pagination>
+            </div>
+        </div>
+</div>

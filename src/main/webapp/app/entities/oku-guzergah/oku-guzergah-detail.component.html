@@ -1,0 +1,39 @@
+
+<div *ngIf="okuGuzergah">
+    <h2><span>Oku Guzergah</span> {{okuGuzergah.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span>Kod</span></dt>
+        <dd>
+            <span>{{okuGuzergah.kod}}</span>
+        </dd>
+        <dt><span>Rota</span></dt>
+        <dd>
+            <span>{{okuGuzergah.rota}}</span>
+        </dd>
+        <dt><span>Harita</span></dt>
+        <dd>
+            <span>{{okuGuzergah.harita}}</span>
+        </dd>
+        <dt><span>Okul</span></dt>
+        <dd>
+            <div *ngIf="okuGuzergah.okul">
+                <a [routerLink]="['/oku-okul', okuGuzergah.okul?.id]">{{okuGuzergah.okul?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'oku-guzergah/'+ okuGuzergah.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+    </button>
+</div>

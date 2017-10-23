@@ -1,0 +1,45 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "okul",
+            "otherEntityName": "okuOkul",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "guzergah",
+            "otherEntityName": "okuGuzergah",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "no",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "isim",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "tc",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "aileIsim",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "aileTel",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20171023180316",
+    "entityTableName": "oku_ogrenci",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false
+}

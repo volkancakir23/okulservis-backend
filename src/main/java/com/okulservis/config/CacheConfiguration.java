@@ -41,6 +41,14 @@ public class CacheConfiguration {
             cm.createCache(com.okulservis.domain.User.class.getName(), jcacheConfiguration);
             cm.createCache(com.okulservis.domain.Authority.class.getName(), jcacheConfiguration);
             cm.createCache(com.okulservis.domain.User.class.getName() + ".authorities", jcacheConfiguration);
+            cm.createCache(com.okulservis.domain.OkuSehir.class.getName(), jcacheConfiguration);
+            cm.createCache(com.okulservis.domain.OkuOkul.class.getName(), jcacheConfiguration);
+            cm.createCache(com.okulservis.domain.OkuOgrenci.class.getName(), jcacheConfiguration);
+            cm.createCache(com.okulservis.domain.OkuYolcu.class.getName(), jcacheConfiguration);
+            cm.createCache(com.okulservis.domain.OkuGuzergah.class.getName(), jcacheConfiguration);
+            cm.createCache(com.okulservis.domain.OkuSofor.class.getName(), jcacheConfiguration);
+            cm.createCache(com.okulservis.domain.OkuArac.class.getName(), jcacheConfiguration);
+            cm.createCache(com.okulservis.domain.OkuSefer.class.getName(), jcacheConfiguration);
             // jhipster-needle-ehcache-add-entry
         };
     }

@@ -1,0 +1,91 @@
+<div>
+    <h2>
+        <span>Oku Yolcus</span>
+        <button class="btn btn-primary float-right jh-create-entity create-oku-yolcu" [routerLink]="['/', { outlets: { popup: ['oku-yolcu-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span class="hidden-sm-down" >
+            Create new Oku Yolcu
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="Query">
+                    <button class="input-group-addon btn btn-info" (click)="search(currentSearch)">
+                        <span class="fa fa-search"></span>
+                    </button>
+                    <button class="input-group-addon btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <span class="fa fa-trash-o"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="okuYolcus">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span>ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="bindiMi"><span>Bindi Mi</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="ulastiMi"><span>Ulasti Mi</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="sefer.id"><span>Sefer</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="ogrenci.id"><span>Ogrenci</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let okuYolcu of okuYolcus ;trackBy: trackId">
+                <td><a [routerLink]="['../oku-yolcu', okuYolcu.id ]">{{okuYolcu.id}}</a></td>
+                <td>{{okuYolcu.bindiMi}}</td>
+                <td>{{okuYolcu.ulastiMi}}</td>
+                <td>
+                    <div *ngIf="okuYolcu.sefer">
+                        <a [routerLink]="['../oku-sefer', okuYolcu.sefer?.id ]" >{{okuYolcu.sefer?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="okuYolcu.ogrenci">
+                        <a [routerLink]="['../oku-ogrenci', okuYolcu.ogrenci?.id ]" >{{okuYolcu.ogrenci?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../oku-yolcu', okuYolcu.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'oku-yolcu/'+ okuYolcu.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'oku-yolcu/'+ okuYolcu.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+        <div *ngIf="okuYolcus && okuYolcus.length">
+            <div class="row justify-content-center">
+                <jhi-item-count [page]="page" [total]="queryCount" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+            </div>
+            <div class="row justify-content-center">
+                <ngb-pagination [collectionSize]="totalItems" [pageSize]="itemsPerPage" [(page)]="page" (pageChange)="loadPage(page)"></ngb-pagination>
+            </div>
+        </div>
+</div>

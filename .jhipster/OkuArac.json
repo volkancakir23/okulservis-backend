@@ -1,0 +1,28 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "kod",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "plaka",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "marka",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "renk",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20171023180320",
+    "entityTableName": "oku_arac",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false
+}

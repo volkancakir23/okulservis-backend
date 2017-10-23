@@ -1,0 +1,31 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "okul",
+            "otherEntityName": "okuOkul",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "kod",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "rota",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "harita",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20171023180318",
+    "entityTableName": "oku_guzergah",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false
+}

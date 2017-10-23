@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity OkuSefer.
+    -->
+    <changeSet id="20171023180321-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="guzergah_id"
+                                 baseTableName="oku_sefer"
+                                 constraintName="fk_oku_sefer_guzergah_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="oku_guzergah"/>
+
+        <addForeignKeyConstraint baseColumnNames="sofor_id"
+                                 baseTableName="oku_sefer"
+                                 constraintName="fk_oku_sefer_sofor_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="oku_sofor"/>
+
+        <addForeignKeyConstraint baseColumnNames="arac_id"
+                                 baseTableName="oku_sefer"
+                                 constraintName="fk_oku_sefer_arac_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="oku_arac"/>
+
+    </changeSet>
+</databaseChangeLog>

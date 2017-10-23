@@ -1,0 +1,18 @@
+---------------------
+
+jhipster import-jdl okulservis-jdl.jh
+
+
+
+
+---------------------
+--expo mobil icin
+
+npm run start
+
+npm install exp --global
+--exp init okusis
+--cd okusis
+exp start
+
+exp publish

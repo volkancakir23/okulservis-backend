@@ -1,0 +1,69 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myOkuSeferLabel">Create or edit a Oku Sefer</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!okuSefer.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="okuSefer.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_tarih">Tarih</label>
+            <div class="input-group">
+                <input id="field_tarih" type="text" class="form-control" name="tarih" ngbDatepicker  #tarihDp="ngbDatepicker" [(ngModel)]="okuSefer.tarih"
+                />
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-secondary" (click)="tarihDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_servis">Servis</label>
+            <select class="form-control" name="servis" [(ngModel)]="okuSefer.servis" id="field_servis" >
+                <option value="SABAH">SABAH</option>
+                <option value="AKSAM">AKSAM</option>
+                <option value="DIGER">DIGER</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_yapildiMi">Yapildi Mi</label>
+            <input type="checkbox" class="form-control" name="yapildiMi" id="field_yapildiMi"
+                [(ngModel)]="okuSefer.yapildiMi"  />
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" for="field_guzergah">Guzergah</label>
+            <select class="form-control" id="field_guzergah" name="guzergah" [(ngModel)]="okuSefer.guzergah" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="okuGuzergahOption.id === okuSefer.guzergah?.id ? okuSefer.guzergah : okuGuzergahOption" *ngFor="let okuGuzergahOption of okuguzergahs; trackBy: trackOkuGuzergahById">{{okuGuzergahOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_sofor">Sofor</label>
+            <select class="form-control" id="field_sofor" name="sofor" [(ngModel)]="okuSefer.sofor" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="okuSoforOption.id === okuSefer.sofor?.id ? okuSefer.sofor : okuSoforOption" *ngFor="let okuSoforOption of okusofors; trackBy: trackOkuSoforById">{{okuSoforOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_arac">Arac</label>
+            <select class="form-control" id="field_arac" name="arac" [(ngModel)]="okuSefer.arac" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="okuAracOption.id === okuSefer.arac?.id ? okuSefer.arac : okuAracOption" *ngFor="let okuAracOption of okuaracs; trackBy: trackOkuAracById">{{okuAracOption.id}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>
