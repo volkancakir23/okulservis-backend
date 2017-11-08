@@ -52,6 +52,18 @@ entity OkuSefer{
     yapildiMi Boolean
 }
 
+entity OkuPersonel{
+	kod String,
+    isim String,
+    tel String
+}
+
+entity OkuVeli{
+	kod String,
+    isim String,
+    tel String
+}
+
 relationship ManyToOne {
 	OkuOkul{sehir} to OkuSehir
 }
@@ -60,7 +72,6 @@ relationship ManyToOne {
 	OkuOgrenci{okul} to OkuOkul,
 	OkuOgrenci{guzergah} to OkuGuzergah
 }
-
 
 relationship ManyToOne {
 	OkuSehir{parent} to OkuSehir
@@ -79,6 +90,20 @@ relationship ManyToOne {
 relationship ManyToOne {
 	OkuYolcu{sefer} to OkuSefer,
 	OkuYolcu{ogrenci} to OkuOgrenci
+}
+
+relationship ManyToOne {
+	OkuPersonel{okul} to OkuOkul,
+    OkuPersonel{user} to User
+}
+
+relationship ManyToOne {
+	OkuVeli{okul} to OkuOgrenci,
+	OkuVeli{okul} to User
+}
+
+relationship ManyToOne {
+	OkuSofor{okul} to User
 }
 
 service all with serviceImpl
