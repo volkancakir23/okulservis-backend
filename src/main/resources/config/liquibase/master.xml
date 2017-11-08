@@ -13,6 +13,8 @@
     <include file="config/liquibase/changelog/20171023180319_added_entity_OkuSofor.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20171023180320_added_entity_OkuArac.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20171023180321_added_entity_OkuSefer.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20171108190000_added_entity_OkuPersonel.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20171108200000_added_entity_OkuVeli.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <include file="config/liquibase/changelog/20171023180314_added_entity_constraints_OkuSehir.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20171023180315_added_entity_constraints_OkuOkul.xml" relativeToChangelogFile="false"/>
@@ -20,5 +22,7 @@
     <include file="config/liquibase/changelog/20171023180317_added_entity_constraints_OkuYolcu.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20171023180318_added_entity_constraints_OkuGuzergah.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20171023180321_added_entity_constraints_OkuSefer.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20171108190000_added_entity_constraints_OkuPersonel.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20171108200000_added_entity_constraints_OkuVeli.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>
