@@ -3,7 +3,7 @@
     "promptValues": {
       "packageName": "com.okulservis"
     },
-    "jhipsterVersion": "4.10.0",
+    "jhipsterVersion": "4.10.2",
     "baseName": "okulservis",
     "packageName": "com.okulservis",
     "packageFolder": "com/okulservis",
