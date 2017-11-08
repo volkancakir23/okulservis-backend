@@ -1,4 +1,5 @@
 package com.okulservis.web.rest;
+
 import com.okulservis.config.Constants;
 import com.okulservis.OkulservisApp;
 import com.okulservis.domain.Authority;
@@ -13,6 +14,7 @@ import com.okulservis.web.rest.vm.KeyAndPasswordVM;
 import com.okulservis.web.rest.vm.ManagedUserVM;
 import com.okulservis.service.UserService;
 import org.apache.commons.lang3.RandomStringUtils;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -28,10 +30,11 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.time.Instant;
 import java.time.LocalDate;
+
 import java.util.*;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.hasItem;
 import static org.mockito.Matchers.anyObject;
@@ -81,9 +84,9 @@ public class AccountResourceIntTest {
     public void setup() {
         MockitoAnnotations.initMocks(this);
         doNothing().when(mockMailService).sendActivationEmail(anyObject());
-
         AccountResource accountResource =
             new AccountResource(userRepository, userService, mockMailService);
+
         AccountResource accountUserMockResource =
             new AccountResource(userRepository, mockUserService, mockMailService);
         this.restMvc = MockMvcBuilders.standaloneSetup(accountResource)
