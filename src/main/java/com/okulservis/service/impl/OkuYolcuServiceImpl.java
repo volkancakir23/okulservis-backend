@@ -1,5 +1,6 @@
 package com.okulservis.service.impl;
 
+import com.okulservis.domain.enumeration.OkuServis;
 import com.okulservis.service.OkuYolcuService;
 import com.okulservis.domain.OkuYolcu;
 import com.okulservis.repository.OkuYolcuRepository;
@@ -11,6 +12,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+
+import java.time.LocalDate;
+import java.util.List;
 
 import static org.elasticsearch.index.query.QueryBuilders.*;
 
@@ -98,4 +102,16 @@ public class OkuYolcuServiceImpl implements OkuYolcuService{
         Page<OkuYolcu> result = okuYolcuSearchRepository.search(queryStringQuery(query), pageable);
         return result;
     }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<OkuYolcu> findBySefer_Tarih(LocalDate date) {
+        return okuYolcuRepository.findBySefer_Tarih(date);
+    }
+
+    @Transactional(readOnly = true)
+    public List<OkuYolcu> findBySefer_TarihAndSefer_Servis(LocalDate tarih, OkuServis okuServis) {
+        return okuYolcuRepository.findBySefer_TarihAndSefer_Servis(tarih,okuServis);
+    }
+
 }

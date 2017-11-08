@@ -37,16 +37,17 @@ public class UserJWTControllerIntTest {
     private AuthenticationManager authenticationManager;
 
     @Autowired
-    private UserRepository userRepository;
+    private PasswordEncoder passwordEncoder;
 
     @Autowired
-    private PasswordEncoder passwordEncoder;
+    private UserRepository userRepository;
 
     private MockMvc mockMvc;
 
     @Before
     public void setup() {
-        UserJWTController userJWTController = new UserJWTController(tokenProvider, authenticationManager);
+        UserJWTController userJWTController = new UserJWTController(tokenProvider, authenticationManager,
+            userRepository);
         this.mockMvc = MockMvcBuilders.standaloneSetup(userJWTController)
             .build();
     }

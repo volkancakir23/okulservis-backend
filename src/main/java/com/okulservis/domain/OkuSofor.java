@@ -33,6 +33,9 @@ public class OkuSofor implements Serializable {
     @Column(name = "tel")
     private String tel;
 
+    @Column(name = "user_id")
+    private User user;
+
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -75,6 +78,14 @@ public class OkuSofor implements Serializable {
     public OkuSofor tel(String tel) {
         this.tel = tel;
         return this;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public void setTel(String tel) {
