@@ -1,0 +1,27 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "parent",
+            "otherEntityName": "okuSehir",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "kod",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "isim",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20171023180314",
+    "entityTableName": "oku_sehir",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false
+}

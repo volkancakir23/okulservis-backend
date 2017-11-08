@@ -1,0 +1,37 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "okul",
+            "otherEntityName": "okuOkul",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "user",
+            "otherEntityName": "user",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "kod",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "isim",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "tel",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20171108190000",
+    "dto": "no",
+    "service": "serviceImpl",
+    "entityTableName": "oku_personel",
+    "jpaMetamodelFiltering": false,
+    "pagination": "pagination"
+}

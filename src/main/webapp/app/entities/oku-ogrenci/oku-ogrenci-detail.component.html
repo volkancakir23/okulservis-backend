@@ -1,0 +1,53 @@
+
+<div *ngIf="okuOgrenci">
+    <h2><span>Oku Ogrenci</span> {{okuOgrenci.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span>No</span></dt>
+        <dd>
+            <span>{{okuOgrenci.no}}</span>
+        </dd>
+        <dt><span>Isim</span></dt>
+        <dd>
+            <span>{{okuOgrenci.isim}}</span>
+        </dd>
+        <dt><span>Tc</span></dt>
+        <dd>
+            <span>{{okuOgrenci.tc}}</span>
+        </dd>
+        <dt><span>Aile Isim</span></dt>
+        <dd>
+            <span>{{okuOgrenci.aileIsim}}</span>
+        </dd>
+        <dt><span>Aile Tel</span></dt>
+        <dd>
+            <span>{{okuOgrenci.aileTel}}</span>
+        </dd>
+        <dt><span>Okul</span></dt>
+        <dd>
+            <div *ngIf="okuOgrenci.okul">
+                <a [routerLink]="['/oku-okul', okuOgrenci.okul?.id]">{{okuOgrenci.okul?.id}}</a>
+            </div>
+        </dd>
+        <dt><span>Guzergah</span></dt>
+        <dd>
+            <div *ngIf="okuOgrenci.guzergah">
+                <a [routerLink]="['/oku-guzergah', okuOgrenci.guzergah?.id]">{{okuOgrenci.guzergah?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'oku-ogrenci/'+ okuOgrenci.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+    </button>
+</div>

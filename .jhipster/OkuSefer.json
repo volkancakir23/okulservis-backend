@@ -1,0 +1,44 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "guzergah",
+            "otherEntityName": "okuGuzergah",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "sofor",
+            "otherEntityName": "okuSofor",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "arac",
+            "otherEntityName": "okuArac",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "tarih",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "servis",
+            "fieldType": "OkuServis",
+            "fieldValues": "SABAH,AKSAM,DIGER"
+        },
+        {
+            "fieldName": "yapildiMi",
+            "fieldType": "Boolean"
+        }
+    ],
+    "changelogDate": "20171023180321",
+    "entityTableName": "oku_sefer",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false
+}

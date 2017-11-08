@@ -1,0 +1,33 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "sefer",
+            "otherEntityName": "okuSefer",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "ogrenci",
+            "otherEntityName": "okuOgrenci",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "bindiMi",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "ulastiMi",
+            "fieldType": "Boolean"
+        }
+    ],
+    "changelogDate": "20171023180317",
+    "entityTableName": "oku_yolcu",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false
+}

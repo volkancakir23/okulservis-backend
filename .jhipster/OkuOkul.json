@@ -1,0 +1,35 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "sehir",
+            "otherEntityName": "okuSehir",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "kod",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "isim",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "mudurIsim",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "mudurTel",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20171023180315",
+    "entityTableName": "oku_okul",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false
+}

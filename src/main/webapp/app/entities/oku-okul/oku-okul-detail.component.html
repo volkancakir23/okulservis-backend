@@ -1,0 +1,43 @@
+
+<div *ngIf="okuOkul">
+    <h2><span>Oku Okul</span> {{okuOkul.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span>Kod</span></dt>
+        <dd>
+            <span>{{okuOkul.kod}}</span>
+        </dd>
+        <dt><span>Isim</span></dt>
+        <dd>
+            <span>{{okuOkul.isim}}</span>
+        </dd>
+        <dt><span>Mudur Isim</span></dt>
+        <dd>
+            <span>{{okuOkul.mudurIsim}}</span>
+        </dd>
+        <dt><span>Mudur Tel</span></dt>
+        <dd>
+            <span>{{okuOkul.mudurTel}}</span>
+        </dd>
+        <dt><span>Sehir</span></dt>
+        <dd>
+            <div *ngIf="okuOkul.sehir">
+                <a [routerLink]="['/oku-sehir', okuOkul.sehir?.id]">{{okuOkul.sehir?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'oku-okul/'+ okuOkul.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+    </button>
+</div>

@@ -1,0 +1,54 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myOkuPersonelLabel">Create or edit a Oku Personel</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!okuPersonel.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="okuPersonel.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_kod">Kod</label>
+            <input type="text" class="form-control" name="kod" id="field_kod"
+                [(ngModel)]="okuPersonel.kod"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_isim">Isim</label>
+            <input type="text" class="form-control" name="isim" id="field_isim"
+                [(ngModel)]="okuPersonel.isim"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_tel">Tel</label>
+            <input type="text" class="form-control" name="tel" id="field_tel"
+                [(ngModel)]="okuPersonel.tel"  />
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" for="field_okul">Okul</label>
+            <select class="form-control" id="field_okul" name="okul" [(ngModel)]="okuPersonel.okul" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="okuOkulOption.id === okuPersonel.okul?.id ? okuPersonel.okul : okuOkulOption" *ngFor="let okuOkulOption of okuokuls; trackBy: trackOkuOkulById">{{okuOkulOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_user">User</label>
+            <select class="form-control" id="field_user" name="user" [(ngModel)]="okuPersonel.user" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="userOption.id === okuPersonel.user?.id ? okuPersonel.user : userOption" *ngFor="let userOption of users; trackBy: trackUserById">{{userOption.id}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>
