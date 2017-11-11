@@ -157,6 +157,7 @@ public class OkuYolcuResource {
     @GetMapping("/findBySefer_TarihAndSefer_Servis")
     @Timed
     public List<OkuYolcu> findBySefer_TarihAndSefer_Servis(@RequestParam String servis) {
+
         return okuYolcuService.findBySefer_TarihAndSefer_Servis(LocalDate.now(),OkuServis.valueOf(servis));
     }
 

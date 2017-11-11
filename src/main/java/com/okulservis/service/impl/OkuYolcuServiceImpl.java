@@ -1,14 +1,21 @@
 package com.okulservis.service.impl;
 
 import com.okulservis.domain.enumeration.OkuServis;
+import com.okulservis.security.SecurityUtils;
+import com.okulservis.service.BaseServiceImpl;
 import com.okulservis.service.OkuYolcuService;
 import com.okulservis.domain.OkuYolcu;
 import com.okulservis.repository.OkuYolcuRepository;
 import com.okulservis.repository.search.OkuYolcuSearchRepository;
+import com.okulservis.service.SessionUser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -23,7 +30,7 @@ import static org.elasticsearch.index.query.QueryBuilders.*;
  */
 @Service
 @Transactional
-public class OkuYolcuServiceImpl implements OkuYolcuService{
+public class OkuYolcuServiceImpl extends BaseServiceImpl implements OkuYolcuService{
 
     private final Logger log = LoggerFactory.getLogger(OkuYolcuServiceImpl.class);
 
