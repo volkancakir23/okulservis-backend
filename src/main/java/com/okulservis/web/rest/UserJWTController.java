@@ -1,6 +1,10 @@
 package com.okulservis.web.rest;
 
+import com.okulservis.domain.OkuPersonel;
+import com.okulservis.domain.OkuSofor;
 import com.okulservis.domain.User;
+import com.okulservis.repository.OkuPersonelRepository;
+import com.okulservis.repository.OkuSoforRepository;
 import com.okulservis.repository.UserRepository;
 import com.okulservis.security.jwt.JWTConfigurer;
 import com.okulservis.security.jwt.TokenProvider;
@@ -10,9 +14,6 @@ import com.codahale.metrics.annotation.Timed;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import com.okulservis.web.rest.vm.ResponseLogin;
-import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -27,7 +28,6 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import java.util.Collections;
-import java.util.Date;
 import java.util.Optional;
 
 /**
@@ -45,11 +45,18 @@ public class UserJWTController {
 
     private final UserRepository userRepository;
 
+    private final OkuSoforRepository okuSoforRepository;
+
+    private final OkuPersonelRepository okuPersonelRepository;
+
     public UserJWTController(TokenProvider tokenProvider, AuthenticationManager authenticationManager,
-                             UserRepository userRepository) {
+                             UserRepository userRepository, OkuSoforRepository okuSoforRepository,
+                             OkuPersonelRepository okuPersonelRepository) {
         this.tokenProvider = tokenProvider;
         this.authenticationManager = authenticationManager;
         this.userRepository = userRepository;
+        this.okuSoforRepository = okuSoforRepository;
+        this.okuPersonelRepository = okuPersonelRepository;
     }
 
     @PostMapping("/authenticate")
@@ -58,15 +65,18 @@ public class UserJWTController {
 
         UsernamePasswordAuthenticationToken authenticationToken =
             new UsernamePasswordAuthenticationToken(loginVM.getUsername(), loginVM.getPassword());
-
+        Optional<User> user = userRepository.findOneByLogin(loginVM.getUsername());
         try {
             Authentication authentication = this.authenticationManager.authenticate(authenticationToken);
             SecurityContextHolder.getContext().setAuthentication(authentication);
             boolean rememberMe = (loginVM.isRememberMe() == null) ? false : loginVM.isRememberMe();
             String jwt = tokenProvider.createToken(authentication, rememberMe);
             response.addHeader(JWTConfigurer.AUTHORIZATION_HEADER, "Bearer " + jwt);
-            Optional<User> user = userRepository.findOneByLogin(loginVM.getUsername());
-            ResponseLogin responseLogin = new ResponseLogin(1, user.get(), new JWTToken(jwt));
+
+            OkuPersonel okuPersonel = (OkuPersonel) okuPersonelRepository.findByUserIsCurrentUser();
+            OkuSofor okuSofor = (OkuSofor) okuSoforRepository.findOkuSoforByUser(user.get());
+
+            ResponseLogin responseLogin = new ResponseLogin(1, user.get(), new JWTToken(jwt), okuPersonel, okuSofor);
             //return ResponseEntity.ok(new JWTToken(jwt));
             return ResponseEntity.ok(responseLogin);
         } catch (AuthenticationException ae) {

@@ -33,7 +33,7 @@ public class OkuSofor implements Serializable {
     @Column(name = "tel")
     private String tel;
 
-    @Column(name = "user_id")
+    @ManyToOne
     private User user;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove

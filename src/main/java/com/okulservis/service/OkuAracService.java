@@ -1,8 +1,12 @@
 package com.okulservis.service;
 
 import com.okulservis.domain.OkuArac;
+import com.okulservis.domain.enumeration.OkuServis;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+
+import java.time.LocalDate;
+import java.util.List;
 
 /**
  * Service Interface for managing OkuArac.
@@ -44,9 +48,12 @@ public interface OkuAracService {
      * Search for the okuArac corresponding to the query.
      *
      *  @param query the query of the search
-     *  
+     *
      *  @param pageable the pagination information
      *  @return the list of entities
      */
     Page<OkuArac> search(String query, Pageable pageable);
+
+    List<Object> findByPlakaQuery(OkuServis servis);
+
 }

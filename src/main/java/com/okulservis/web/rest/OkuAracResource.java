@@ -2,6 +2,7 @@ package com.okulservis.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 import com.okulservis.domain.OkuArac;
+import com.okulservis.domain.enumeration.OkuServis;
 import com.okulservis.service.OkuAracService;
 import com.okulservis.web.rest.errors.BadRequestAlertException;
 import com.okulservis.web.rest.util.HeaderUtil;
@@ -143,6 +144,12 @@ public class OkuAracResource {
         Page<OkuArac> page = okuAracService.search(query, pageable);
         HttpHeaders headers = PaginationUtil.generateSearchPaginationHttpHeaders(query, page, "/api/_search/oku-aracs");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+    }
+
+    @GetMapping("/findByPlakaQuery")
+    @Timed
+    public List<Object> findByPlakaQuery(@RequestParam String servis) {
+        return okuAracService.findByPlakaQuery(OkuServis.valueOf(servis));
     }
 
 }

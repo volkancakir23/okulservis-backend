@@ -1,9 +1,12 @@
 package com.okulservis.service.impl;
 
+import com.okulservis.domain.User;
+import com.okulservis.domain.enumeration.OkuServis;
 import com.okulservis.service.OkuAracService;
 import com.okulservis.domain.OkuArac;
 import com.okulservis.repository.OkuAracRepository;
 import com.okulservis.repository.search.OkuAracSearchRepository;
+import com.okulservis.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -11,6 +14,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+
+import java.time.LocalDate;
+import java.util.List;
 
 import static org.elasticsearch.index.query.QueryBuilders.*;
 
@@ -27,9 +33,12 @@ public class OkuAracServiceImpl implements OkuAracService{
 
     private final OkuAracSearchRepository okuAracSearchRepository;
 
-    public OkuAracServiceImpl(OkuAracRepository okuAracRepository, OkuAracSearchRepository okuAracSearchRepository) {
+    private final UserService userService;
+
+    public OkuAracServiceImpl(OkuAracRepository okuAracRepository, OkuAracSearchRepository okuAracSearchRepository, UserService userService) {
         this.okuAracRepository = okuAracRepository;
         this.okuAracSearchRepository = okuAracSearchRepository;
+        this.userService = userService;
     }
 
     /**
@@ -98,4 +107,12 @@ public class OkuAracServiceImpl implements OkuAracService{
         Page<OkuArac> result = okuAracSearchRepository.search(queryStringQuery(query), pageable);
         return result;
     }
+
+    @Transactional(readOnly = true)
+    public List<Object> findByPlakaQuery(OkuServis okuServis){
+        User user = userService.getUserWithAuthorities();
+        Long userId = user.getId();
+        return okuAracRepository.findByPlakaQuery(okuServis,userId, LocalDate.now());
+    }
+
 }

@@ -1,21 +1,17 @@
 package com.okulservis.service.impl;
 
+import com.okulservis.domain.User;
 import com.okulservis.domain.enumeration.OkuServis;
-import com.okulservis.security.SecurityUtils;
 import com.okulservis.service.BaseServiceImpl;
 import com.okulservis.service.OkuYolcuService;
 import com.okulservis.domain.OkuYolcu;
 import com.okulservis.repository.OkuYolcuRepository;
 import com.okulservis.repository.search.OkuYolcuSearchRepository;
-import com.okulservis.service.SessionUser;
+import com.okulservis.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.security.core.context.SecurityContext;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -24,6 +20,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 import static org.elasticsearch.index.query.QueryBuilders.*;
+
 
 /**
  * Service Implementation for managing OkuYolcu.
@@ -38,9 +35,13 @@ public class OkuYolcuServiceImpl extends BaseServiceImpl implements OkuYolcuServ
 
     private final OkuYolcuSearchRepository okuYolcuSearchRepository;
 
-    public OkuYolcuServiceImpl(OkuYolcuRepository okuYolcuRepository, OkuYolcuSearchRepository okuYolcuSearchRepository) {
+    private final UserService userService;
+
+    public OkuYolcuServiceImpl(OkuYolcuRepository okuYolcuRepository,
+                               OkuYolcuSearchRepository okuYolcuSearchRepository, UserService userService) {
         this.okuYolcuRepository = okuYolcuRepository;
         this.okuYolcuSearchRepository = okuYolcuSearchRepository;
+        this.userService = userService;
     }
 
     /**
@@ -118,7 +119,25 @@ public class OkuYolcuServiceImpl extends BaseServiceImpl implements OkuYolcuServ
 
     @Transactional(readOnly = true)
     public List<OkuYolcu> findBySefer_TarihAndSefer_Servis(LocalDate tarih, OkuServis okuServis) {
+        User user = userService.getUserWithAuthorities();
         return okuYolcuRepository.findBySefer_TarihAndSefer_Servis(tarih,okuServis);
     }
 
+    @Override
+    public List<OkuYolcu> findBySefer_TarihAndSefer_ServisAndSefer_Sofor_User(LocalDate tarih, OkuServis okuServis) {
+        User user = userService.getUserWithAuthorities();
+        return okuYolcuRepository.findBySefer_TarihAndSefer_ServisAndSefer_Sofor_User(tarih,okuServis,user);
+    }
+
+    @Transactional(readOnly = true)
+    public List<OkuYolcu> findByQuery(LocalDate tarih, OkuServis okuServis){
+        User user = userService.getUserWithAuthorities();
+        Long userId = user.getId();
+        return okuYolcuRepository.findByQuery(tarih,okuServis,userId);
+    }
+
+    public List<OkuYolcu> findOkuYolcuBySefer_Id(Long seferId) {
+
+        return okuYolcuRepository.findOkuYolcuBySefer_Id(seferId);
+    }
 }

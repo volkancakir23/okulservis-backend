@@ -1,6 +1,7 @@
 package com.okulservis.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+import com.okulservis.domain.OkuArac;
 import com.okulservis.domain.OkuYolcu;
 import com.okulservis.domain.enumeration.OkuServis;
 import com.okulservis.service.OkuYolcuService;
@@ -159,6 +160,26 @@ public class OkuYolcuResource {
     public List<OkuYolcu> findBySefer_TarihAndSefer_Servis(@RequestParam String servis) {
 
         return okuYolcuService.findBySefer_TarihAndSefer_Servis(LocalDate.now(),OkuServis.valueOf(servis));
+    }
+
+    @GetMapping("/findBySefer_TarihAndSefer_ServisAndSefer_Sofor_User")
+    @Timed
+    public List<OkuYolcu> findBySefer_TarihAndSefer_ServisAndSefer_Sofor_User(@RequestParam String servis) {
+
+        return okuYolcuService.findBySefer_TarihAndSefer_ServisAndSefer_Sofor_User(LocalDate.now(),OkuServis.valueOf(servis));
+    }
+
+    @GetMapping("/findByQuery")
+    @Timed
+    public List<OkuYolcu> findByQuery(@RequestParam String servis) {
+
+        return okuYolcuService.findByQuery(LocalDate.now(),OkuServis.valueOf(servis));
+    }
+
+    @GetMapping("/findOkuYolcuBySefer_Id")
+    @Timed
+    public List<OkuYolcu> findOkuYolcuBySefer_Id(@RequestParam Long seferId) {
+        return okuYolcuService.findOkuYolcuBySefer_Id(seferId);
     }
 
 }

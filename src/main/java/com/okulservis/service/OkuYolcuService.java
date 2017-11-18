@@ -56,4 +56,9 @@ public interface OkuYolcuService {
 
     List<OkuYolcu> findBySefer_Tarih(LocalDate date);
     List<OkuYolcu> findBySefer_TarihAndSefer_Servis(LocalDate tarih, OkuServis okuServis);
+    List<OkuYolcu> findBySefer_TarihAndSefer_ServisAndSefer_Sofor_User(LocalDate tarih, OkuServis okuServis);
+
+    List<OkuYolcu> findByQuery(LocalDate now, OkuServis okuServis);
+
+    List<OkuYolcu> findOkuYolcuBySefer_Id(Long SeferId);
 }

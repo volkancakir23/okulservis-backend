@@ -2,6 +2,8 @@ package com.okulservis.web.rest;
 
 import com.okulservis.OkulservisApp;
 import com.okulservis.domain.User;
+import com.okulservis.repository.OkuPersonelRepository;
+import com.okulservis.repository.OkuSoforRepository;
 import com.okulservis.repository.UserRepository;
 import com.okulservis.security.jwt.TokenProvider;
 import com.okulservis.web.rest.errors.ExceptionTranslator;
@@ -44,6 +46,12 @@ public class UserJWTControllerIntTest {
     private UserRepository userRepository;
 
     @Autowired
+    private OkuSoforRepository okuSoforRepository;
+
+    @Autowired
+    private OkuPersonelRepository okuPersonelRepository;
+
+    @Autowired
     private ExceptionTranslator exceptionTranslator;
 
     private MockMvc mockMvc;
@@ -51,7 +59,7 @@ public class UserJWTControllerIntTest {
     @Before
     public void setup() {
         UserJWTController userJWTController = new UserJWTController(tokenProvider, authenticationManager,
-            userRepository);
+            userRepository, okuSoforRepository, okuPersonelRepository);
         this.mockMvc = MockMvcBuilders.standaloneSetup(userJWTController)
             .setControllerAdvice(exceptionTranslator)
             .build();
