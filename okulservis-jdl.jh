@@ -93,17 +93,17 @@ relationship ManyToOne {
 }
 
 relationship ManyToOne {
-	OkuPersonel{okul} to OkuOkul,
+	OkuPersonel{okuOkul} to OkuOkul,
     OkuPersonel{user} to User
 }
 
 relationship ManyToOne {
-	OkuVeli{okul} to OkuOgrenci,
-	OkuVeli{okul} to User
+	OkuVeli{okuOgrenci} to OkuOgrenci,
+	OkuVeli{user} to User
 }
 
 relationship ManyToOne {
-	OkuSofor{okul} to User
+	OkuSofor{user} to User
 }
 
 service all with serviceImpl

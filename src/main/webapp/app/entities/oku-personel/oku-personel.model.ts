@@ -6,7 +6,7 @@ export class OkuPersonel implements BaseEntity {
         public kod?: string,
         public isim?: string,
         public tel?: string,
-        public okul?: BaseEntity,
+        public okuOkul?: BaseEntity,
         public user?: User,
     ) {
     }

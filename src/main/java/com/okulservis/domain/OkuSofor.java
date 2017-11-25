@@ -80,16 +80,21 @@ public class OkuSofor implements Serializable {
         return this;
     }
 
+    public void setTel(String tel) {
+        this.tel = tel;
+    }
+
     public User getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+    public OkuSofor user(User user) {
         this.user = user;
+        return this;
     }
 
-    public void setTel(String tel) {
-        this.tel = tel;
+    public void setUser(User user) {
+        this.user = user;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

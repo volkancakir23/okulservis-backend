@@ -14,6 +14,6 @@ import java.util.List;
 public interface OkuPersonelRepository extends JpaRepository<OkuPersonel, Long> {
 
     @Query("select oku_personel from OkuPersonel oku_personel where oku_personel.user.login = ?#{principal.username}")
-    OkuPersonel findByUserIsCurrentUser();
+    List<OkuPersonel> findByUserIsCurrentUser();
 
 }

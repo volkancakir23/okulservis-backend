@@ -2,6 +2,7 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { OkulservisSharedModule } from '../../shared';
+import { OkulservisAdminModule } from '../../admin/admin.module';
 import {
     OkuSoforService,
     OkuSoforPopupService,
@@ -24,6 +25,7 @@ const ENTITY_STATES = [
 @NgModule({
     imports: [
         OkulservisSharedModule,
+        OkulservisAdminModule,
         RouterModule.forRoot(ENTITY_STATES, { useHash: true })
     ],
     declarations: [

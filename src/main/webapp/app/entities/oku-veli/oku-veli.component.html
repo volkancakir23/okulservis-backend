@@ -1,10 +1,10 @@
 <div>
     <h2>
-        <span>Oku Sofors</span>
-        <button class="btn btn-primary float-right jh-create-entity create-oku-sofor" [routerLink]="['/', { outlets: { popup: ['oku-sofor-new'] } }]">
+        <span>Oku Velis</span>
+        <button class="btn btn-primary float-right jh-create-entity create-oku-veli" [routerLink]="['/', { outlets: { popup: ['oku-veli-new'] } }]">
             <span class="fa fa-plus"></span>
             <span class="hidden-sm-down" >
-            Create new Oku Sofor
+            Create new Oku Veli
             </span>
         </button>
     </h2>
@@ -25,7 +25,7 @@
         </div>
     </div>
     <br/>
-    <div class="table-responsive" *ngIf="okuSofors">
+    <div class="table-responsive" *ngIf="okuVelis">
         <table class="table table-striped">
             <thead>
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
@@ -33,36 +33,42 @@
             <th jhiSortBy="kod"><span>Kod</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="isim"><span>Isim</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="tel"><span>Tel</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="okuOgrenci.id"><span>Oku Ogrenci</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="user.id"><span>User</span> <span class="fa fa-sort"></span></th>
             <th></th>
             </tr>
             </thead>
             <tbody>
-            <tr *ngFor="let okuSofor of okuSofors ;trackBy: trackId">
-                <td><a [routerLink]="['../oku-sofor', okuSofor.id ]">{{okuSofor.id}}</a></td>
-                <td>{{okuSofor.kod}}</td>
-                <td>{{okuSofor.isim}}</td>
-                <td>{{okuSofor.tel}}</td>
+            <tr *ngFor="let okuVeli of okuVelis ;trackBy: trackId">
+                <td><a [routerLink]="['../oku-veli', okuVeli.id ]">{{okuVeli.id}}</a></td>
+                <td>{{okuVeli.kod}}</td>
+                <td>{{okuVeli.isim}}</td>
+                <td>{{okuVeli.tel}}</td>
                 <td>
-                    {{okuSofor.user?.id}}
+                    <div *ngIf="okuVeli.okuOgrenci">
+                        <a [routerLink]="['../oku-ogrenci', okuVeli.okuOgrenci?.id ]" >{{okuVeli.okuOgrenci?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    {{okuVeli.user?.id}}
                 </td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"
-                                [routerLink]="['../oku-sofor', okuSofor.id ]"
+                                [routerLink]="['../oku-veli', okuVeli.id ]"
                                 class="btn btn-info btn-sm">
                             <span class="fa fa-eye"></span>
                             <span class="d-none d-md-inline">View</span>
                         </button>
                         <button type="submit"
-                                [routerLink]="['/', { outlets: { popup: 'oku-sofor/'+ okuSofor.id + '/edit'} }]"
+                                [routerLink]="['/', { outlets: { popup: 'oku-veli/'+ okuVeli.id + '/edit'} }]"
                                 replaceUrl="true"
                                 class="btn btn-primary btn-sm">
                             <span class="fa fa-pencil"></span>
                             <span class="d-none d-md-inline">Edit</span>
                         </button>
                         <button type="submit"
-                                [routerLink]="['/', { outlets: { popup: 'oku-sofor/'+ okuSofor.id + '/delete'} }]"
+                                [routerLink]="['/', { outlets: { popup: 'oku-veli/'+ okuVeli.id + '/delete'} }]"
                                 replaceUrl="true"
                                 class="btn btn-danger btn-sm">
                             <span class="fa fa-remove"></span>
@@ -74,7 +80,7 @@
             </tbody>
         </table>
     </div>
-        <div *ngIf="okuSofors && okuSofors.length">
+        <div *ngIf="okuVelis && okuVelis.length">
             <div class="row justify-content-center">
                 <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
             </div>

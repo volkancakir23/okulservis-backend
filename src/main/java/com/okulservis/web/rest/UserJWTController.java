@@ -74,7 +74,7 @@ public class UserJWTController {
             response.addHeader(JWTConfigurer.AUTHORIZATION_HEADER, "Bearer " + jwt);
 
             OkuPersonel okuPersonel = (OkuPersonel) okuPersonelRepository.findByUserIsCurrentUser();
-            OkuSofor okuSofor = (OkuSofor) okuSoforRepository.findOkuSoforByUser(user.get());
+            OkuSofor okuSofor = (OkuSofor) okuSoforRepository.findByUserIsCurrentUser();
 
             ResponseLogin responseLogin = new ResponseLogin(1, user.get(), new JWTToken(jwt), okuPersonel, okuSofor);
             //return ResponseEntity.ok(new JWTToken(jwt));

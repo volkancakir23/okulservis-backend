@@ -34,7 +34,7 @@ public class OkuPersonel implements Serializable {
     private String tel;
 
     @ManyToOne
-    private OkuOkul okul;
+    private OkuOkul okuOkul;
 
     @ManyToOne
     private User user;
@@ -87,17 +87,17 @@ public class OkuPersonel implements Serializable {
         this.tel = tel;
     }
 
-    public OkuOkul getOkul() {
-        return okul;
+    public OkuOkul getOkuOkul() {
+        return okuOkul;
     }
 
-    public OkuPersonel okul(OkuOkul okuOkul) {
-        this.okul = okuOkul;
+    public OkuPersonel okuOkul(OkuOkul okuOkul) {
+        this.okuOkul = okuOkul;
         return this;
     }
 
-    public void setOkul(OkuOkul okuOkul) {
-        this.okul = okuOkul;
+    public void setOkuOkul(OkuOkul okuOkul) {
+        this.okuOkul = okuOkul;
     }
 
     public User getUser() {

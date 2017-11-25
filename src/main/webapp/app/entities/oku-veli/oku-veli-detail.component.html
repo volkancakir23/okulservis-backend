@@ -16,10 +16,10 @@
         <dd>
             <span>{{okuVeli.tel}}</span>
         </dd>
-        <dt><span>Ogrenci</span></dt>
+        <dt><span>Oku Ogrenci</span></dt>
         <dd>
-            <div *ngIf="okuVeli.ogrenci">
-                <a [routerLink]="['/oku-ogrenci', okuVeli.ogrenci?.id]">{{okuVeli.ogrenci?.id}}</a>
+            <div *ngIf="okuVeli.okuOgrenci">
+                <a [routerLink]="['/oku-ogrenci', okuVeli.okuOgrenci?.id]">{{okuVeli.okuOgrenci?.id}}</a>
             </div>
         </dd>
         <dt><span>User</span></dt>

@@ -9,6 +9,8 @@ import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
 import { OkuSofor } from './oku-sofor.model';
 import { OkuSoforPopupService } from './oku-sofor-popup.service';
 import { OkuSoforService } from './oku-sofor.service';
+import { User, UserService } from '../../shared';
+import { ResponseWrapper } from '../../shared';
 
 @Component({
     selector: 'jhi-oku-sofor-dialog',
@@ -19,16 +21,21 @@ export class OkuSoforDialogComponent implements OnInit {
     okuSofor: OkuSofor;
     isSaving: boolean;
 
+    users: User[];
+
     constructor(
         public activeModal: NgbActiveModal,
         private jhiAlertService: JhiAlertService,
         private okuSoforService: OkuSoforService,
+        private userService: UserService,
         private eventManager: JhiEventManager
     ) {
     }
 
     ngOnInit() {
         this.isSaving = false;
+        this.userService.query()
+            .subscribe((res: ResponseWrapper) => { this.users = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
     }
 
     clear() {
@@ -63,6 +70,10 @@ export class OkuSoforDialogComponent implements OnInit {
 
     private onError(error: any) {
         this.jhiAlertService.error(error.message, null, null);
+    }
+
+    trackUserById(index: number, item: User) {
+        return item.id;
     }
 }
 
