@@ -93,7 +93,7 @@ relationship ManyToOne {
 }
 
 relationship ManyToOne {
-	OkuPersonel{okuOkul} to OkuOkul,
+	OkuPersonel{okul} to OkuOkul,
     OkuPersonel{user} to User
 }
 
