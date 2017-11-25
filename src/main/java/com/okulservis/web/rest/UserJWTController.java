@@ -28,6 +28,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import java.util.Collections;
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -73,8 +74,22 @@ public class UserJWTController {
             String jwt = tokenProvider.createToken(authentication, rememberMe);
             response.addHeader(JWTConfigurer.AUTHORIZATION_HEADER, "Bearer " + jwt);
 
-            OkuPersonel okuPersonel = (OkuPersonel) okuPersonelRepository.findByUserIsCurrentUser();
-            OkuSofor okuSofor = (OkuSofor) okuSoforRepository.findByUserIsCurrentUser();
+            List<OkuPersonel> okuPersonelList = okuPersonelRepository.findByUserIsCurrentUser();
+            List<OkuSofor> okuSoforList = okuSoforRepository.findByUserIsCurrentUser();
+
+            OkuPersonel okuPersonel;
+            if (okuPersonelList.size()==0) {
+                okuPersonel = new OkuPersonel();
+            } else {
+                okuPersonel = okuPersonelList.get(0);
+            }
+
+            OkuSofor okuSofor;
+            if (okuSoforList.size()==0) {
+                okuSofor = new OkuSofor();
+            } else {
+                okuSofor = okuSoforList.get(0);
+            }
 
             ResponseLogin responseLogin = new ResponseLogin(1, user.get(), new JWTToken(jwt), okuPersonel, okuSofor);
             //return ResponseEntity.ok(new JWTToken(jwt));

@@ -19,7 +19,7 @@ import java.util.List;
 public interface OkuAracRepository extends JpaRepository<OkuArac, Long> {
 
     @Query("select os.id as seferId, os.arac.kod||' '||os.arac.plaka as dsc from OkuSefer os, OkuPersonel op " +
-        "where os.tarih=:tarih and os.guzergah.okul.id=op.okuOkul.id and op.user.id=:userId " +
+        "where os.tarih=:tarih and os.guzergah.okul.id=op.okul.id and op.user.id=:userId " +
         "and os.servis=:okuServis"
     )
     List<Object> findByPlakaQuery(@Param("okuServis") OkuServis okuServis, @Param("userId") Long userId, @Param("tarih") LocalDate tarih);
