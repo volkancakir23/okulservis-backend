@@ -79,14 +79,14 @@ public class UserJWTController {
 
             OkuPersonel okuPersonel;
             if (okuPersonelList.size()==0) {
-                okuPersonel = new OkuPersonel();
+                okuPersonel = null;
             } else {
                 okuPersonel = okuPersonelList.get(0);
             }
 
             OkuSofor okuSofor;
             if (okuSoforList.size()==0) {
-                okuSofor = new OkuSofor();
+                okuSofor = null;
             } else {
                 okuSofor = okuSoforList.get(0);
             }
