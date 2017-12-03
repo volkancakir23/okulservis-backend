@@ -6,7 +6,7 @@ export class OkuVeli implements BaseEntity {
         public kod?: string,
         public isim?: string,
         public tel?: string,
-        public okuOgrenci?: BaseEntity,
+        public ogrenci?: BaseEntity,
         public user?: User,
     ) {
     }

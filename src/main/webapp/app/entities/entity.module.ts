@@ -23,7 +23,7 @@ import { OkulservisOkuVeliModule } from './oku-veli/oku-veli.module';
         OkulservisOkuAracModule,
         OkulservisOkuSeferModule,
         OkulservisOkuPersonelModule,
-        OkulservisOkuVeliModule
+        OkulservisOkuVeliModule,
         /* jhipster-needle-add-entity-module - JHipster will add entity modules here */
     ],
     declarations: [],

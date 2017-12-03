@@ -29,10 +29,10 @@
         </div>
 
         <div class="form-group">
-            <label class="form-control-label" for="field_okuOgrenci">Oku Ogrenci</label>
-            <select class="form-control" id="field_okuOgrenci" name="okuOgrenci" [(ngModel)]="okuVeli.okuOgrenci" >
+            <label class="form-control-label" for="field_ogrenci">Ogrenci</label>
+            <select class="form-control" id="field_ogrenci" name="ogrenci" [(ngModel)]="okuVeli.ogrenci" >
                 <option [ngValue]="null"></option>
-                <option [ngValue]="okuOgrenciOption.id === okuVeli.okuOgrenci?.id ? okuVeli.okuOgrenci : okuOgrenciOption" *ngFor="let okuOgrenciOption of okuogrencis; trackBy: trackOkuOgrenciById">{{okuOgrenciOption.id}}</option>
+                <option [ngValue]="okuOgrenciOption.id === okuVeli.ogrenci?.id ? okuVeli.ogrenci : okuOgrenciOption" *ngFor="let okuOgrenciOption of okuogrencis; trackBy: trackOkuOgrenciById">{{okuOgrenciOption.id}}</option>
             </select>
         </div>
         <div class="form-group">

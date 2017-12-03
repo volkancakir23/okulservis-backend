@@ -34,7 +34,7 @@ public class OkuVeli implements Serializable {
     private String tel;
 
     @ManyToOne
-    private OkuOgrenci okuOgrenci;
+    private OkuOgrenci ogrenci;
 
     @ManyToOne
     private User user;
@@ -87,17 +87,17 @@ public class OkuVeli implements Serializable {
         this.tel = tel;
     }
 
-    public OkuOgrenci getOkuOgrenci() {
-        return okuOgrenci;
+    public OkuOgrenci getOgrenci() {
+        return ogrenci;
     }
 
-    public OkuVeli okuOgrenci(OkuOgrenci okuOgrenci) {
-        this.okuOgrenci = okuOgrenci;
+    public OkuVeli ogrenci(OkuOgrenci okuOgrenci) {
+        this.ogrenci = okuOgrenci;
         return this;
     }
 
-    public void setOkuOgrenci(OkuOgrenci okuOgrenci) {
-        this.okuOgrenci = okuOgrenci;
+    public void setOgrenci(OkuOgrenci okuOgrenci) {
+        this.ogrenci = okuOgrenci;
     }
 
     public User getUser() {
