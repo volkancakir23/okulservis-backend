@@ -98,7 +98,7 @@ relationship ManyToOne {
 }
 
 relationship ManyToOne {
-	OkuVeli{okuOgrenci} to OkuOgrenci,
+	OkuVeli{ogrenci} to OkuOgrenci,
 	OkuVeli{user} to User
 }
 
