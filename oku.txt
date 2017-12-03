@@ -16,3 +16,8 @@ npm install exp --global
 exp start
 
 exp publish
+
+
+--
+filed name isimleri oku ile baslamiyor
+--
