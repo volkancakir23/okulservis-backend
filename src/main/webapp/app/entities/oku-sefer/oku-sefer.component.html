@@ -33,9 +33,9 @@
             <th jhiSortBy="tarih"><span>Tarih</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="servis"><span>Servis</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="yapildiMi"><span>Yapildi Mi</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="guzergah.id"><span>Guzergah</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="sofor.id"><span>Sofor</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="arac.id"><span>Arac</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="guzergah.rota"><span>Guzergah</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="sofor.isim"><span>Sofor</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="arac.plaka"><span>Arac</span> <span class="fa fa-sort"></span></th>
             <th></th>
             </tr>
             </thead>
@@ -47,17 +47,17 @@
                 <td>{{okuSefer.yapildiMi}}</td>
                 <td>
                     <div *ngIf="okuSefer.guzergah">
-                        <a [routerLink]="['../oku-guzergah', okuSefer.guzergah?.id ]" >{{okuSefer.guzergah?.id}}</a>
+                        <a [routerLink]="['../oku-guzergah', okuSefer.guzergah?.id ]" >{{okuSefer.guzergah?.rota}}</a>
                     </div>
                 </td>
                 <td>
                     <div *ngIf="okuSefer.sofor">
-                        <a [routerLink]="['../oku-sofor', okuSefer.sofor?.id ]" >{{okuSefer.sofor?.id}}</a>
+                        <a [routerLink]="['../oku-sofor', okuSefer.sofor?.id ]" >{{okuSefer.sofor?.isim}}</a>
                     </div>
                 </td>
                 <td>
                     <div *ngIf="okuSefer.arac">
-                        <a [routerLink]="['../oku-arac', okuSefer.arac?.id ]" >{{okuSefer.arac?.id}}</a>
+                        <a [routerLink]="['../oku-arac', okuSefer.arac?.id ]" >{{okuSefer.arac?.plaka}}</a>
                     </div>
                 </td>
                 <td class="text-right">

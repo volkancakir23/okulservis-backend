@@ -29,17 +29,17 @@
         </div>
 
         <div class="form-group">
-            <label class="form-control-label" for="field_okuOkul">Oku Okul</label>
-            <select class="form-control" id="field_okuOkul" name="okuOkul" [(ngModel)]="okuPersonel.okuOkul" >
+            <label class="form-control-label" for="field_okul">Okul</label>
+            <select class="form-control" id="field_okul" name="okul" [(ngModel)]="okuPersonel.okul" >
                 <option [ngValue]="null"></option>
-                <option [ngValue]="okuOkulOption.id === okuPersonel.okuOkul?.id ? okuPersonel.okuOkul : okuOkulOption" *ngFor="let okuOkulOption of okuokuls; trackBy: trackOkuOkulById">{{okuOkulOption.id}}</option>
+                <option [ngValue]="okuOkulOption.id === okuPersonel.okul?.id ? okuPersonel.okul : okuOkulOption" *ngFor="let okuOkulOption of okuokuls; trackBy: trackOkuOkulById">{{okuOkulOption.isim}}</option>
             </select>
         </div>
         <div class="form-group">
             <label class="form-control-label" for="field_user">User</label>
             <select class="form-control" id="field_user" name="user" [(ngModel)]="okuPersonel.user" >
                 <option [ngValue]="null"></option>
-                <option [ngValue]="userOption.id === okuPersonel.user?.id ? okuPersonel.user : userOption" *ngFor="let userOption of users; trackBy: trackUserById">{{userOption.id}}</option>
+                <option [ngValue]="userOption.id === okuPersonel.user?.id ? okuPersonel.user : userOption" *ngFor="let userOption of users; trackBy: trackUserById">{{userOption.login}}</option>
             </select>
         </div>
     </div>

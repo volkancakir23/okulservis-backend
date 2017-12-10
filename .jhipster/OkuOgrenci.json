@@ -5,13 +5,13 @@
             "relationshipType": "many-to-one",
             "relationshipName": "okul",
             "otherEntityName": "okuOkul",
-            "otherEntityField": "id"
+            "otherEntityField": "isim"
         },
         {
             "relationshipType": "many-to-one",
             "relationshipName": "guzergah",
             "otherEntityName": "okuGuzergah",
-            "otherEntityField": "id"
+            "otherEntityField": "rota"
         }
     ],
     "fields": [

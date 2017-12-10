@@ -19,12 +19,12 @@
         <dt><span>Ogrenci</span></dt>
         <dd>
             <div *ngIf="okuVeli.ogrenci">
-                <a [routerLink]="['/oku-ogrenci', okuVeli.ogrenci?.id]">{{okuVeli.ogrenci?.id}}</a>
+                <a [routerLink]="['/oku-ogrenci', okuVeli.ogrenci?.id]">{{okuVeli.ogrenci?.isim}}</a>
             </div>
         </dd>
         <dt><span>User</span></dt>
         <dd>
-            {{okuVeli.user?.id}}
+            {{okuVeli.user?.login}}
         </dd>
     </dl>
 

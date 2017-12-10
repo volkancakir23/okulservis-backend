@@ -27,13 +27,13 @@
         <dt><span>Okul</span></dt>
         <dd>
             <div *ngIf="okuOgrenci.okul">
-                <a [routerLink]="['/oku-okul', okuOgrenci.okul?.id]">{{okuOgrenci.okul?.id}}</a>
+                <a [routerLink]="['/oku-okul', okuOgrenci.okul?.id]">{{okuOgrenci.okul?.isim}}</a>
             </div>
         </dd>
         <dt><span>Guzergah</span></dt>
         <dd>
             <div *ngIf="okuOgrenci.guzergah">
-                <a [routerLink]="['/oku-guzergah', okuOgrenci.guzergah?.id]">{{okuOgrenci.guzergah?.id}}</a>
+                <a [routerLink]="['/oku-guzergah', okuOgrenci.guzergah?.id]">{{okuOgrenci.guzergah?.rota}}</a>
             </div>
         </dd>
     </dl>

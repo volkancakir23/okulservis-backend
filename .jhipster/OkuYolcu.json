@@ -5,13 +5,13 @@
             "relationshipType": "many-to-one",
             "relationshipName": "sefer",
             "otherEntityName": "okuSefer",
-            "otherEntityField": "id"
+            "otherEntityField": "servis"
         },
         {
             "relationshipType": "many-to-one",
             "relationshipName": "ogrenci",
             "otherEntityName": "okuOgrenci",
-            "otherEntityField": "id"
+            "otherEntityField": "isim"
         }
     ],
     "fields": [

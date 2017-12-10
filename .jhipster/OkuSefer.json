@@ -5,19 +5,19 @@
             "relationshipType": "many-to-one",
             "relationshipName": "guzergah",
             "otherEntityName": "okuGuzergah",
-            "otherEntityField": "id"
+            "otherEntityField": "rota"
         },
         {
             "relationshipType": "many-to-one",
             "relationshipName": "sofor",
             "otherEntityName": "okuSofor",
-            "otherEntityField": "id"
+            "otherEntityField": "isim"
         },
         {
             "relationshipType": "many-to-one",
             "relationshipName": "arac",
             "otherEntityName": "okuArac",
-            "otherEntityField": "id"
+            "otherEntityField": "plaka"
         }
     ],
     "fields": [

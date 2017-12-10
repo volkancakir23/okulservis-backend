@@ -1,9 +1,7 @@
 package com.okulservis.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
-import com.okulservis.domain.OkuArac;
 import com.okulservis.domain.OkuYolcu;
-import com.okulservis.domain.enumeration.OkuServis;
 import com.okulservis.service.OkuYolcuService;
 import com.okulservis.web.rest.errors.BadRequestAlertException;
 import com.okulservis.web.rest.util.HeaderUtil;
@@ -22,8 +20,6 @@ import org.springframework.web.bind.annotation.*;
 import java.net.URI;
 import java.net.URISyntaxException;
 
-import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.StreamSupport;
@@ -147,39 +143,6 @@ public class OkuYolcuResource {
         Page<OkuYolcu> page = okuYolcuService.search(query, pageable);
         HttpHeaders headers = PaginationUtil.generateSearchPaginationHttpHeaders(query, page, "/api/_search/oku-yolcus");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
-    }
-
-    @GetMapping("/findBySefer_Tarih")
-    @Timed
-    public List<OkuYolcu> findBySefer_Tarih() {
-        return okuYolcuService.findBySefer_Tarih(LocalDate.now());
-    }
-
-    @GetMapping("/findBySefer_TarihAndSefer_Servis")
-    @Timed
-    public List<OkuYolcu> findBySefer_TarihAndSefer_Servis(@RequestParam String servis) {
-
-        return okuYolcuService.findBySefer_TarihAndSefer_Servis(LocalDate.now(),OkuServis.valueOf(servis));
-    }
-
-    @GetMapping("/findBySefer_TarihAndSefer_ServisAndSefer_Sofor_User")
-    @Timed
-    public List<OkuYolcu> findBySefer_TarihAndSefer_ServisAndSefer_Sofor_User(@RequestParam String servis) {
-
-        return okuYolcuService.findBySefer_TarihAndSefer_ServisAndSefer_Sofor_User(LocalDate.now(),OkuServis.valueOf(servis));
-    }
-
-    @GetMapping("/findByQuery")
-    @Timed
-    public List<OkuYolcu> findByQuery(@RequestParam String servis) {
-
-        return okuYolcuService.findByQuery(LocalDate.now(),OkuServis.valueOf(servis));
-    }
-
-    @GetMapping("/findOkuYolcuBySefer_Id")
-    @Timed
-    public List<OkuYolcu> findOkuYolcuBySefer_Id(@RequestParam Long seferId) {
-        return okuYolcuService.findOkuYolcuBySefer_Id(seferId);
     }
 
 }

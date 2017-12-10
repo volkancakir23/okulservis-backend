@@ -65,12 +65,12 @@ entity OkuVeli{
 }
 
 relationship ManyToOne {
-	OkuOkul{sehir} to OkuSehir
+	OkuOkul{sehir(isim)} to OkuSehir
 }
 
 relationship ManyToOne {
-	OkuOgrenci{okul} to OkuOkul,
-	OkuOgrenci{guzergah} to OkuGuzergah
+	OkuOgrenci{okul(isim)} to OkuOkul,
+    OkuOgrenci{guzergah(rota)} to OkuGuzergah
 }
 
 relationship ManyToOne {
@@ -78,32 +78,32 @@ relationship ManyToOne {
 }
 
 relationship ManyToOne {
-	OkuGuzergah{okul} to OkuOkul
+	OkuGuzergah{okul(isim)} to OkuOkul
 }
 
 relationship ManyToOne {
-	OkuSefer{guzergah} to OkuGuzergah,
-    OkuSefer{sofor} to OkuSofor,
-    OkuSefer{arac} to OkuArac
+	OkuSefer{guzergah(rota)} to OkuGuzergah,
+    OkuSefer{sofor(isim)} to OkuSofor,
+    OkuSefer{arac(plaka)} to OkuArac
 }
 
 relationship ManyToOne {
-	OkuYolcu{sefer} to OkuSefer,
-	OkuYolcu{ogrenci} to OkuOgrenci
+	OkuYolcu{sefer(servis)} to OkuSefer,
+    OkuYolcu{ogrenci(isim)} to OkuOgrenci
 }
 
 relationship ManyToOne {
-	OkuPersonel{okul} to OkuOkul,
-    OkuPersonel{user} to User
+	OkuPersonel{okul(isim)} to OkuOkul,
+    OkuPersonel{user(login)} to User
 }
 
 relationship ManyToOne {
-	OkuVeli{ogrenci} to OkuOgrenci,
-	OkuVeli{user} to User
+	OkuVeli{ogrenci(isim)} to OkuOgrenci,
+	OkuVeli{user(login)} to User
 }
 
 relationship ManyToOne {
-	OkuSofor{user} to User
+	OkuSofor{user(login)} to User
 }
 
 service all with serviceImpl

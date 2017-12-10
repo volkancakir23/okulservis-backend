@@ -40,21 +40,21 @@
             <label class="form-control-label" for="field_guzergah">Guzergah</label>
             <select class="form-control" id="field_guzergah" name="guzergah" [(ngModel)]="okuSefer.guzergah" >
                 <option [ngValue]="null"></option>
-                <option [ngValue]="okuGuzergahOption.id === okuSefer.guzergah?.id ? okuSefer.guzergah : okuGuzergahOption" *ngFor="let okuGuzergahOption of okuguzergahs; trackBy: trackOkuGuzergahById">{{okuGuzergahOption.id}}</option>
+                <option [ngValue]="okuGuzergahOption.id === okuSefer.guzergah?.id ? okuSefer.guzergah : okuGuzergahOption" *ngFor="let okuGuzergahOption of okuguzergahs; trackBy: trackOkuGuzergahById">{{okuGuzergahOption.rota}}</option>
             </select>
         </div>
         <div class="form-group">
             <label class="form-control-label" for="field_sofor">Sofor</label>
             <select class="form-control" id="field_sofor" name="sofor" [(ngModel)]="okuSefer.sofor" >
                 <option [ngValue]="null"></option>
-                <option [ngValue]="okuSoforOption.id === okuSefer.sofor?.id ? okuSefer.sofor : okuSoforOption" *ngFor="let okuSoforOption of okusofors; trackBy: trackOkuSoforById">{{okuSoforOption.id}}</option>
+                <option [ngValue]="okuSoforOption.id === okuSefer.sofor?.id ? okuSefer.sofor : okuSoforOption" *ngFor="let okuSoforOption of okusofors; trackBy: trackOkuSoforById">{{okuSoforOption.isim}}</option>
             </select>
         </div>
         <div class="form-group">
             <label class="form-control-label" for="field_arac">Arac</label>
             <select class="form-control" id="field_arac" name="arac" [(ngModel)]="okuSefer.arac" >
                 <option [ngValue]="null"></option>
-                <option [ngValue]="okuAracOption.id === okuSefer.arac?.id ? okuSefer.arac : okuAracOption" *ngFor="let okuAracOption of okuaracs; trackBy: trackOkuAracById">{{okuAracOption.id}}</option>
+                <option [ngValue]="okuAracOption.id === okuSefer.arac?.id ? okuSefer.arac : okuAracOption" *ngFor="let okuAracOption of okuaracs; trackBy: trackOkuAracById">{{okuAracOption.plaka}}</option>
             </select>
         </div>
     </div>

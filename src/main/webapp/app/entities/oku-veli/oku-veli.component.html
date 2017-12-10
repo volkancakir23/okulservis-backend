@@ -33,8 +33,8 @@
             <th jhiSortBy="kod"><span>Kod</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="isim"><span>Isim</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="tel"><span>Tel</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="ogrenci.id"><span>Ogrenci</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="user.id"><span>User</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="ogrenci.isim"><span>Ogrenci</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="user.login"><span>User</span> <span class="fa fa-sort"></span></th>
             <th></th>
             </tr>
             </thead>
@@ -46,11 +46,11 @@
                 <td>{{okuVeli.tel}}</td>
                 <td>
                     <div *ngIf="okuVeli.ogrenci">
-                        <a [routerLink]="['../oku-ogrenci', okuVeli.ogrenci?.id ]" >{{okuVeli.ogrenci?.id}}</a>
+                        <a [routerLink]="['../oku-ogrenci', okuVeli.ogrenci?.id ]" >{{okuVeli.ogrenci?.isim}}</a>
                     </div>
                 </td>
                 <td>
-                    {{okuVeli.user?.id}}
+                    {{okuVeli.user?.login}}
                 </td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">

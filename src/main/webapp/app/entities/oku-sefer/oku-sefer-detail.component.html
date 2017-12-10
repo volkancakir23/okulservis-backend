@@ -19,19 +19,19 @@
         <dt><span>Guzergah</span></dt>
         <dd>
             <div *ngIf="okuSefer.guzergah">
-                <a [routerLink]="['/oku-guzergah', okuSefer.guzergah?.id]">{{okuSefer.guzergah?.id}}</a>
+                <a [routerLink]="['/oku-guzergah', okuSefer.guzergah?.id]">{{okuSefer.guzergah?.rota}}</a>
             </div>
         </dd>
         <dt><span>Sofor</span></dt>
         <dd>
             <div *ngIf="okuSefer.sofor">
-                <a [routerLink]="['/oku-sofor', okuSefer.sofor?.id]">{{okuSefer.sofor?.id}}</a>
+                <a [routerLink]="['/oku-sofor', okuSefer.sofor?.id]">{{okuSefer.sofor?.isim}}</a>
             </div>
         </dd>
         <dt><span>Arac</span></dt>
         <dd>
             <div *ngIf="okuSefer.arac">
-                <a [routerLink]="['/oku-arac', okuSefer.arac?.id]">{{okuSefer.arac?.id}}</a>
+                <a [routerLink]="['/oku-arac', okuSefer.arac?.id]">{{okuSefer.arac?.plaka}}</a>
             </div>
         </dd>
     </dl>

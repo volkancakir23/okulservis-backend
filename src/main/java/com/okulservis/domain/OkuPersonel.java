@@ -87,17 +87,17 @@ public class OkuPersonel implements Serializable {
         this.tel = tel;
     }
 
-    public OkuOkul getOkuOkul() {
+    public OkuOkul getOkul() {
         return okul;
     }
 
-    public OkuPersonel okuOkul(OkuOkul okul) {
-        this.okul = okul;
+    public OkuPersonel okul(OkuOkul okuOkul) {
+        this.okul = okuOkul;
         return this;
     }
 
-    public void setOkuOkul(OkuOkul okul) {
-        this.okul = okul;
+    public void setOkul(OkuOkul okuOkul) {
+        this.okul = okuOkul;
     }
 
     public User getUser() {

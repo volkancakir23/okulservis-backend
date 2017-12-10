@@ -51,6 +51,7 @@ public class CacheConfiguration {
             cm.createCache(com.okulservis.domain.OkuSefer.class.getName(), jcacheConfiguration);
             cm.createCache(com.okulservis.domain.OkuPersonel.class.getName(), jcacheConfiguration);
             cm.createCache(com.okulservis.domain.OkuVeli.class.getName(), jcacheConfiguration);
+            cm.createCache(com.okulservis.domain.OkuSehir.class.getName() + ".okuOkuls", jcacheConfiguration);
             // jhipster-needle-ehcache-add-entry
         };
     }

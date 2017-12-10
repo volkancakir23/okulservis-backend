@@ -1,13 +1,9 @@
 package com.okulservis.service.impl;
 
-import com.okulservis.domain.User;
-import com.okulservis.domain.enumeration.OkuServis;
-import com.okulservis.service.BaseServiceImpl;
 import com.okulservis.service.OkuYolcuService;
 import com.okulservis.domain.OkuYolcu;
 import com.okulservis.repository.OkuYolcuRepository;
 import com.okulservis.repository.search.OkuYolcuSearchRepository;
-import com.okulservis.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -16,18 +12,14 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 
-import java.time.LocalDate;
-import java.util.List;
-
 import static org.elasticsearch.index.query.QueryBuilders.*;
-
 
 /**
  * Service Implementation for managing OkuYolcu.
  */
 @Service
 @Transactional
-public class OkuYolcuServiceImpl extends BaseServiceImpl implements OkuYolcuService{
+public class OkuYolcuServiceImpl implements OkuYolcuService{
 
     private final Logger log = LoggerFactory.getLogger(OkuYolcuServiceImpl.class);
 
@@ -35,13 +27,9 @@ public class OkuYolcuServiceImpl extends BaseServiceImpl implements OkuYolcuServ
 
     private final OkuYolcuSearchRepository okuYolcuSearchRepository;
 
-    private final UserService userService;
-
-    public OkuYolcuServiceImpl(OkuYolcuRepository okuYolcuRepository,
-                               OkuYolcuSearchRepository okuYolcuSearchRepository, UserService userService) {
+    public OkuYolcuServiceImpl(OkuYolcuRepository okuYolcuRepository, OkuYolcuSearchRepository okuYolcuSearchRepository) {
         this.okuYolcuRepository = okuYolcuRepository;
         this.okuYolcuSearchRepository = okuYolcuSearchRepository;
-        this.userService = userService;
     }
 
     /**
@@ -109,35 +97,5 @@ public class OkuYolcuServiceImpl extends BaseServiceImpl implements OkuYolcuServ
         log.debug("Request to search for a page of OkuYolcus for query {}", query);
         Page<OkuYolcu> result = okuYolcuSearchRepository.search(queryStringQuery(query), pageable);
         return result;
-    }
-
-    @Override
-    @Transactional(readOnly = true)
-    public List<OkuYolcu> findBySefer_Tarih(LocalDate date) {
-        return okuYolcuRepository.findBySefer_Tarih(date);
-    }
-
-    @Transactional(readOnly = true)
-    public List<OkuYolcu> findBySefer_TarihAndSefer_Servis(LocalDate tarih, OkuServis okuServis) {
-        User user = userService.getUserWithAuthorities();
-        return okuYolcuRepository.findBySefer_TarihAndSefer_Servis(tarih,okuServis);
-    }
-
-    @Override
-    public List<OkuYolcu> findBySefer_TarihAndSefer_ServisAndSefer_Sofor_User(LocalDate tarih, OkuServis okuServis) {
-        User user = userService.getUserWithAuthorities();
-        return okuYolcuRepository.findBySefer_TarihAndSefer_ServisAndSefer_Sofor_User(tarih,okuServis,user);
-    }
-
-    @Transactional(readOnly = true)
-    public List<OkuYolcu> findByQuery(LocalDate tarih, OkuServis okuServis){
-        User user = userService.getUserWithAuthorities();
-        Long userId = user.getId();
-        return okuYolcuRepository.findByQuery(tarih,okuServis,userId);
-    }
-
-    public List<OkuYolcu> findOkuYolcuBySefer_Id(Long seferId) {
-
-        return okuYolcuRepository.findOkuYolcuBySefer_Id(seferId);
     }
 }

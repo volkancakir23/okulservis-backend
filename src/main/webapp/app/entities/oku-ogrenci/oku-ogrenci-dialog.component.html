@@ -42,14 +42,14 @@
             <label class="form-control-label" for="field_okul">Okul</label>
             <select class="form-control" id="field_okul" name="okul" [(ngModel)]="okuOgrenci.okul" >
                 <option [ngValue]="null"></option>
-                <option [ngValue]="okuOkulOption.id === okuOgrenci.okul?.id ? okuOgrenci.okul : okuOkulOption" *ngFor="let okuOkulOption of okuokuls; trackBy: trackOkuOkulById">{{okuOkulOption.id}}</option>
+                <option [ngValue]="okuOkulOption.id === okuOgrenci.okul?.id ? okuOgrenci.okul : okuOkulOption" *ngFor="let okuOkulOption of okuokuls; trackBy: trackOkuOkulById">{{okuOkulOption.isim}}</option>
             </select>
         </div>
         <div class="form-group">
             <label class="form-control-label" for="field_guzergah">Guzergah</label>
             <select class="form-control" id="field_guzergah" name="guzergah" [(ngModel)]="okuOgrenci.guzergah" >
                 <option [ngValue]="null"></option>
-                <option [ngValue]="okuGuzergahOption.id === okuOgrenci.guzergah?.id ? okuOgrenci.guzergah : okuGuzergahOption" *ngFor="let okuGuzergahOption of okuguzergahs; trackBy: trackOkuGuzergahById">{{okuGuzergahOption.id}}</option>
+                <option [ngValue]="okuGuzergahOption.id === okuOgrenci.guzergah?.id ? okuOgrenci.guzergah : okuGuzergahOption" *ngFor="let okuGuzergahOption of okuguzergahs; trackBy: trackOkuGuzergahById">{{okuGuzergahOption.rota}}</option>
             </select>
         </div>
     </div>

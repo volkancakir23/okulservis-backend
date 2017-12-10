@@ -33,7 +33,7 @@
             <th jhiSortBy="kod"><span>Kod</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="isim"><span>Isim</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="tel"><span>Tel</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="user.id"><span>User</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="user.login"><span>User</span> <span class="fa fa-sort"></span></th>
             <th></th>
             </tr>
             </thead>
@@ -44,7 +44,7 @@
                 <td>{{okuSofor.isim}}</td>
                 <td>{{okuSofor.tel}}</td>
                 <td>
-                    {{okuSofor.user?.id}}
+                    {{okuSofor.user?.login}}
                 </td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">

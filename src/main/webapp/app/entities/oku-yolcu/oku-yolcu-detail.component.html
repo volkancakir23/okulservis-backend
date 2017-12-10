@@ -15,13 +15,13 @@
         <dt><span>Sefer</span></dt>
         <dd>
             <div *ngIf="okuYolcu.sefer">
-                <a [routerLink]="['/oku-sefer', okuYolcu.sefer?.id]">{{okuYolcu.sefer?.id}}</a>
+                <a [routerLink]="['/oku-sefer', okuYolcu.sefer?.id]">{{okuYolcu.sefer?.servis}}</a>
             </div>
         </dd>
         <dt><span>Ogrenci</span></dt>
         <dd>
             <div *ngIf="okuYolcu.ogrenci">
-                <a [routerLink]="['/oku-ogrenci', okuYolcu.ogrenci?.id]">{{okuYolcu.ogrenci?.id}}</a>
+                <a [routerLink]="['/oku-ogrenci', okuYolcu.ogrenci?.id]">{{okuYolcu.ogrenci?.isim}}</a>
             </div>
         </dd>
     </dl>

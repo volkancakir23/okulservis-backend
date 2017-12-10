@@ -37,7 +37,7 @@
             <label class="form-control-label" for="field_sehir">Sehir</label>
             <select class="form-control" id="field_sehir" name="sehir" [(ngModel)]="okuOkul.sehir" >
                 <option [ngValue]="null"></option>
-                <option [ngValue]="okuSehirOption.id === okuOkul.sehir?.id ? okuOkul.sehir : okuSehirOption" *ngFor="let okuSehirOption of okusehirs; trackBy: trackOkuSehirById">{{okuSehirOption.id}}</option>
+                <option [ngValue]="okuSehirOption.id === okuOkul.sehir?.id ? okuOkul.sehir : okuSehirOption" *ngFor="let okuSehirOption of okusehirs; trackBy: trackOkuSehirById">{{okuSehirOption.isim}}</option>
             </select>
         </div>
     </div>

@@ -35,8 +35,8 @@
             <th jhiSortBy="tc"><span>Tc</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="aileIsim"><span>Aile Isim</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="aileTel"><span>Aile Tel</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="okul.id"><span>Okul</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="guzergah.id"><span>Guzergah</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="okul.isim"><span>Okul</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="guzergah.rota"><span>Guzergah</span> <span class="fa fa-sort"></span></th>
             <th></th>
             </tr>
             </thead>
@@ -50,12 +50,12 @@
                 <td>{{okuOgrenci.aileTel}}</td>
                 <td>
                     <div *ngIf="okuOgrenci.okul">
-                        <a [routerLink]="['../oku-okul', okuOgrenci.okul?.id ]" >{{okuOgrenci.okul?.id}}</a>
+                        <a [routerLink]="['../oku-okul', okuOgrenci.okul?.id ]" >{{okuOgrenci.okul?.isim}}</a>
                     </div>
                 </td>
                 <td>
                     <div *ngIf="okuOgrenci.guzergah">
-                        <a [routerLink]="['../oku-guzergah', okuOgrenci.guzergah?.id ]" >{{okuOgrenci.guzergah?.id}}</a>
+                        <a [routerLink]="['../oku-guzergah', okuOgrenci.guzergah?.id ]" >{{okuOgrenci.guzergah?.rota}}</a>
                     </div>
                 </td>
                 <td class="text-right">

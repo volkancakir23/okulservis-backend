@@ -33,7 +33,7 @@
             <th jhiSortBy="kod"><span>Kod</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="rota"><span>Rota</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="harita"><span>Harita</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="okul.id"><span>Okul</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="okul.isim"><span>Okul</span> <span class="fa fa-sort"></span></th>
             <th></th>
             </tr>
             </thead>
@@ -45,7 +45,7 @@
                 <td>{{okuGuzergah.harita}}</td>
                 <td>
                     <div *ngIf="okuGuzergah.okul">
-                        <a [routerLink]="['../oku-okul', okuGuzergah.okul?.id ]" >{{okuGuzergah.okul?.id}}</a>
+                        <a [routerLink]="['../oku-okul', okuGuzergah.okul?.id ]" >{{okuGuzergah.okul?.isim}}</a>
                     </div>
                 </td>
                 <td class="text-right">

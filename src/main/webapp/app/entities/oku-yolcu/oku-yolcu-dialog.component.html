@@ -27,14 +27,14 @@
             <label class="form-control-label" for="field_sefer">Sefer</label>
             <select class="form-control" id="field_sefer" name="sefer" [(ngModel)]="okuYolcu.sefer" >
                 <option [ngValue]="null"></option>
-                <option [ngValue]="okuSeferOption.id === okuYolcu.sefer?.id ? okuYolcu.sefer : okuSeferOption" *ngFor="let okuSeferOption of okusefers; trackBy: trackOkuSeferById">{{okuSeferOption.id}}</option>
+                <option [ngValue]="okuSeferOption.id === okuYolcu.sefer?.id ? okuYolcu.sefer : okuSeferOption" *ngFor="let okuSeferOption of okusefers; trackBy: trackOkuSeferById">{{okuSeferOption.servis}}</option>
             </select>
         </div>
         <div class="form-group">
             <label class="form-control-label" for="field_ogrenci">Ogrenci</label>
             <select class="form-control" id="field_ogrenci" name="ogrenci" [(ngModel)]="okuYolcu.ogrenci" >
                 <option [ngValue]="null"></option>
-                <option [ngValue]="okuOgrenciOption.id === okuYolcu.ogrenci?.id ? okuYolcu.ogrenci : okuOgrenciOption" *ngFor="let okuOgrenciOption of okuogrencis; trackBy: trackOkuOgrenciById">{{okuOgrenciOption.id}}</option>
+                <option [ngValue]="okuOgrenciOption.id === okuYolcu.ogrenci?.id ? okuYolcu.ogrenci : okuOgrenciOption" *ngFor="let okuOgrenciOption of okuogrencis; trackBy: trackOkuOgrenciById">{{okuOgrenciOption.isim}}</option>
             </select>
         </div>
     </div>

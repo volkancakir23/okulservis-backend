@@ -16,15 +16,15 @@
         <dd>
             <span>{{okuPersonel.tel}}</span>
         </dd>
-        <dt><span>Oku Okul</span></dt>
+        <dt><span>Okul</span></dt>
         <dd>
-            <div *ngIf="okuPersonel.okuOkul">
-                <a [routerLink]="['/oku-okul', okuPersonel.okuOkul?.id]">{{okuPersonel.okuOkul?.id}}</a>
+            <div *ngIf="okuPersonel.okul">
+                <a [routerLink]="['/oku-okul', okuPersonel.okul?.id]">{{okuPersonel.okul?.isim}}</a>
             </div>
         </dd>
         <dt><span>User</span></dt>
         <dd>
-            {{okuPersonel.user?.id}}
+            {{okuPersonel.user?.login}}
         </dd>
     </dl>
 
