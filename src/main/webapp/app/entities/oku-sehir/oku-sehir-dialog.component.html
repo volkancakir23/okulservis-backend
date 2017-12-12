@@ -23,13 +23,6 @@
                 [(ngModel)]="okuSehir.isim"  />
         </div>
 
-        <div class="form-group">
-            <label class="form-control-label" for="field_parent">Parent</label>
-            <select class="form-control" id="field_parent" name="parent" [(ngModel)]="okuSehir.parent" >
-                <option [ngValue]="null"></option>
-                <option [ngValue]="okuSehirOption.id === okuSehir.parent?.id ? okuSehir.parent : okuSehirOption" *ngFor="let okuSehirOption of okusehirs; trackBy: trackOkuSehirById">{{okuSehirOption.id}}</option>
-            </select>
-        </div>
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">

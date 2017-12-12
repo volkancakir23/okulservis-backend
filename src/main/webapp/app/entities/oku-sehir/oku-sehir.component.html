@@ -32,7 +32,6 @@
             <th jhiSortBy="id"><span>ID</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="kod"><span>Kod</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="isim"><span>Isim</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="parent.id"><span>Parent</span> <span class="fa fa-sort"></span></th>
             <th></th>
             </tr>
             </thead>
@@ -41,11 +40,6 @@
                 <td><a [routerLink]="['../oku-sehir', okuSehir.id ]">{{okuSehir.id}}</a></td>
                 <td>{{okuSehir.kod}}</td>
                 <td>{{okuSehir.isim}}</td>
-                <td>
-                    <div *ngIf="okuSehir.parent">
-                        <a [routerLink]="['../oku-sehir', okuSehir.parent?.id ]" >{{okuSehir.parent?.id}}</a>
-                    </div>
-                </td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"

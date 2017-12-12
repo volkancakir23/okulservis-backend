@@ -5,7 +5,6 @@ export class OkuSehir implements BaseEntity {
         public id?: number,
         public kod?: string,
         public isim?: string,
-        public parent?: BaseEntity,
     ) {
     }
 }

@@ -12,12 +12,6 @@
         <dd>
             <span>{{okuSehir.isim}}</span>
         </dd>
-        <dt><span>Parent</span></dt>
-        <dd>
-            <div *ngIf="okuSehir.parent">
-                <a [routerLink]="['/oku-sehir', okuSehir.parent?.id]">{{okuSehir.parent?.id}}</a>
-            </div>
-        </dd>
     </dl>
 
     <button type="submit"

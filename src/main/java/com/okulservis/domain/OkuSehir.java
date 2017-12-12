@@ -30,9 +30,6 @@ public class OkuSehir implements Serializable {
     @Column(name = "isim")
     private String isim;
 
-    @ManyToOne
-    private OkuSehir parent;
-
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -66,19 +63,6 @@ public class OkuSehir implements Serializable {
 
     public void setIsim(String isim) {
         this.isim = isim;
-    }
-
-    public OkuSehir getParent() {
-        return parent;
-    }
-
-    public OkuSehir parent(OkuSehir okuSehir) {
-        this.parent = okuSehir;
-        return this;
-    }
-
-    public void setParent(OkuSehir okuSehir) {
-        this.parent = okuSehir;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

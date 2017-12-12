@@ -9,7 +9,6 @@ import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
 import { OkuSehir } from './oku-sehir.model';
 import { OkuSehirPopupService } from './oku-sehir-popup.service';
 import { OkuSehirService } from './oku-sehir.service';
-import { ResponseWrapper } from '../../shared';
 
 @Component({
     selector: 'jhi-oku-sehir-dialog',
@@ -19,8 +18,6 @@ export class OkuSehirDialogComponent implements OnInit {
 
     okuSehir: OkuSehir;
     isSaving: boolean;
-
-    okusehirs: OkuSehir[];
 
     constructor(
         public activeModal: NgbActiveModal,
@@ -32,8 +29,6 @@ export class OkuSehirDialogComponent implements OnInit {
 
     ngOnInit() {
         this.isSaving = false;
-        this.okuSehirService.query()
-            .subscribe((res: ResponseWrapper) => { this.okusehirs = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
     }
 
     clear() {
@@ -68,10 +63,6 @@ export class OkuSehirDialogComponent implements OnInit {
 
     private onError(error: any) {
         this.jhiAlertService.error(error.message, null, null);
-    }
-
-    trackOkuSehirById(index: number, item: OkuSehir) {
-        return item.id;
     }
 }
 
