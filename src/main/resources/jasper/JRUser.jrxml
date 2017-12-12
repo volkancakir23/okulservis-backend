@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="JRUser" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="730b2525-f678-44b5-b101-e43a4ac765ff">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[select * from jhi_user]]>
+	</queryString>
+	<field name="id" class="java.lang.Long"/>
+	<field name="login" class="java.lang.String"/>
+	<field name="password_hash" class="java.lang.String"/>
+	<field name="first_name" class="java.lang.String"/>
+	<field name="last_name" class="java.lang.String"/>
+	<field name="email" class="java.lang.String"/>
+	<field name="image_url" class="java.lang.String"/>
+	<field name="activated" class="java.lang.Boolean"/>
+	<field name="lang_key" class="java.lang.String"/>
+	<field name="activation_key" class="java.lang.String"/>
+	<field name="reset_key" class="java.lang.String"/>
+	<field name="created_by" class="java.lang.String"/>
+	<field name="created_date" class="java.sql.Timestamp"/>
+	<field name="reset_date" class="java.sql.Timestamp"/>
+	<field name="last_modified_by" class="java.lang.String"/>
+	<field name="last_modified_date" class="java.sql.Timestamp"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="224" y="30" width="123" height="20" uuid="1183de5f-590d-4e57-a6ac-0ec2a230ad17"/>
+				<textElement textAlignment="Center">
+					<font pdfEncoding="Cp1254"/>
+				</textElement>
+				<text><![CDATA[Kullanıcı Listesi]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="22" splitType="Stretch">
+			<staticText>
+				<reportElement x="87" y="2" width="100" height="20" uuid="1751c97d-59e7-4e7d-b195-f69661a6a0de"/>
+				<text><![CDATA[login]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="268" y="2" width="100" height="20" uuid="108a34d1-8fbf-4496-bde2-09c912e1de59"/>
+				<text><![CDATA[first_name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="435" y="2" width="100" height="20" uuid="93e37c2f-8bfc-443e-b564-18fd755565e3"/>
+				<text><![CDATA[last_name]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="87" y="0" width="100" height="20" uuid="d953df15-fea8-43f3-adff-5ba3c21180c7"/>
+				<textFieldExpression><![CDATA[$F{login}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="268" y="0" width="100" height="20" uuid="7335ebf3-d128-4454-8451-87ef536fb41a"/>
+				<textFieldExpression><![CDATA[$F{first_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="435" y="0" width="100" height="20" uuid="f87ce0ce-7992-4a44-916b-258d5649ce28"/>
+				<textFieldExpression><![CDATA[$F{last_name}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="22" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="22" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="26" splitType="Stretch"/>
+	</summary>
+</jasperReport>
